@@ -1,7 +1,7 @@
 from board import *
 
 def print_board():
-    print('  A   B   C   D   E   F   G   H')
+    print('  A  B  C  D  E  F  G  H')
     for number in '12345678':
         print(number, end=' ')
         for symbol in 'ABCDEFGH':
@@ -11,7 +11,7 @@ def print_board():
                     break
 
             else:
-                print('[ ]', end=' ')
+                print('[ ]', end='')
 
         print('\n')
 
@@ -28,8 +28,9 @@ def game():
                     if choice == 'y':
                         figure.move(move_position)
                 break
+
         else:
-            ...
+            print("Try again")
 
 
 
