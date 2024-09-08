@@ -43,10 +43,20 @@ class Figure():
                 allowed_moves = [[self.position[0], self.position[1] - 1]]
             elif self.color == "white":
                 allowed_moves = [[self.position[0], self.position[1] + 1]]
+            allowed_moves = [move for move in allowed_moves if '*' not in move]
             for figure in figures:
-                if figure.position == [move_x, move_y] and figure.color != self.color:
+                if figure.position == [move_x, int(move_y)]:
                     return False
-                else:...
+                if move_y == self.position[1] - 2 and figure.position[1] == self.position[1] - 1:
+                    return False
+                if move_y == self.position[1] + 2 and figure.position[1] == self.position[1] + 1:
+                    return False
+
+            else:
+                if [move_x, int(move_y)] in allowed_moves:
+                    return True
+                else:
+                    return False
 
 
         elif self.type == "rook":
