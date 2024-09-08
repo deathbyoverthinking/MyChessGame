@@ -63,7 +63,25 @@ class Figure():
             ...
 
         elif self.type == "king":
-            ...
+            allowed_moves = [[all_symbols[self_symbol_ind - 1], all_numbers[self_number_ind + 1]],
+                             [all_symbols[self_symbol_ind - 1], all_numbers[self_number_ind + 0]],
+                             [all_symbols[self_symbol_ind - 1], all_numbers[self_number_ind - 1]],
+                             [all_symbols[self_symbol_ind + 0], all_numbers[self_number_ind - 1]],
+                             [all_symbols[self_symbol_ind + 0], all_numbers[self_number_ind + 1]],
+                             [all_symbols[self_symbol_ind + 1], all_numbers[self_number_ind + 1]],
+                             [all_symbols[self_symbol_ind + 1], all_numbers[self_number_ind + 0]],
+                             [all_symbols[self_symbol_ind + 1], all_numbers[self_number_ind - 1]]]
+            allowed_moves = [move for move in allowed_moves if '*' not in move]
+            if [move_x, move_y] in allowed_moves:
+                for figure in figures:
+                    if figure.position == [move_x, move_y] and figure.color == self.color:
+                        break
+                    elif figure.position == [move_x, move_y] and figure.color != self.color:
+                        return True
+                else:
+                    return True
+            else:
+                return False
 
         elif self.type == "bishop":
             ...
